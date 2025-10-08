@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi tiết phim - Demon Slayer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .movie-poster { max-width: 100%; border-radius: 10px; }
+    .movie-info { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .rating i { color: gold; }
+    .comment-box { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <a href="index.html" class="btn btn-secondary mb-3">⬅ Quay lại</a>
+
+    <div class="row g-4">
+      <div class="col-md-4 text-center">
+        <img src="https://static.nutscdn.com/vimg/0-0/0e77c44f66f3232fb7dd0b89490baad8.jpg"
+             alt="Demon Slayer" class="movie-poster shadow">
+      </div>
+
+      <div class="col-md-8">
+        <div class="movie-info">
+          <h2>Demon Slayer (Thanh Gươm Diệt Quỷ)</h2>
+          <ul class="list-unstyled">
+            <li><strong>Năm:</strong> 2019</li>
+            <li><strong>Thể loại:</strong> Anime, Hành động, Giả tưởng</li>
+            <li><strong>Thời lượng:</strong> 26 tập</li>
+            <li><strong>Đạo diễn:</strong> Haruo Sotozaki</li>
+            <li><strong>Diễn viên:</strong> Natsuki Hanae, Akari Kito, Hiro Shimono</li>
+          </ul>
+          <div class="rating mb-2">
+            <strong>Đánh giá:</strong>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i> 4.5/5
+          </div>
+
+          <p>
+            Tanjiro Kamado, một cậu bé tốt bụng, trở về nhà và phát hiện gia đình mình bị quỷ sát hại.
+            Người duy nhất sống sót là em gái Nezuko, nhưng cô đã biến thành quỷ. Tanjiro quyết tâm trở thành
+            thợ săn quỷ để tìm cách chữa trị cho em gái và trả thù cho gia đình.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trailer -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <h3>🎞 Trailer</h3>
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/VQGCKyvzIM4" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bình luận -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <h3>💬 Bình luận</h3>
+        <div class="comment-box mt-3">
+          <form id="commentForm">
+            <div class="mb-3">
+              <label for="commentText" class="form-label">Viết bình luận của bạn:</label>
+              <textarea id="commentText" class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark">Gửi bình luận</button>
+          </form>
+
+          <div id="commentList" class="mt-4">
+            <h6>Bình luận mới nhất:</h6>
+            <ul class="list-group" id="comments"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap & Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script>
+    // Script thêm bình luận
+    const form = document.getElementById('commentForm');
+    const commentInput = document.getElementById('commentText');
+    const commentList = document.getElementById('comments');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = commentInput.value.trim();
+      if (text) {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = text;
+        commentList.prepend(li);
+        commentInput.value = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
