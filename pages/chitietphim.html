@@ -13,6 +13,8 @@
     .rating i { color: gold; cursor: pointer; font-size: 1.4rem; }
     .rating i.inactive { color: #ccc; }
     .comment-box { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    #episodeList button { min-width: 80px; }
+    #episodeList button:hover { background-color: #000; color: #fff; }
   </style>
 </head>
 <body>
@@ -23,6 +25,19 @@
     <div id="movie-detail" class="row g-4"></div>
 
     <div id="trailer" class="row mt-5"></div>
+
+    <!-- Danh sách tập phim -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <h3>📺 Danh sách tập phim</h3>
+        <div id="episodeList" class="d-flex flex-wrap gap-2 mt-3"></div>
+
+        <!-- khung video phát tập -->
+        <div id="episodePlayer" class="ratio ratio-16x9 mt-4 d-none">
+          <iframe id="episodeFrame" src="" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
 
     <!-- Bình luận -->
     <div class="row mt-5">
@@ -41,8 +56,8 @@
     </div>
   </div>
 
-  <script src="movies.js"></script>
-  <script>
+  <script src="../js/API.js"></script>
+  <!-- <script>
     // ======== LẤY PHIM TỪ URL ========
     const params = new URLSearchParams(window.location.search);
     const movieId = parseInt(params.get("id"));
@@ -91,6 +106,23 @@
           </div>
         </div>
       `;
+
+      // ======== DANH SÁCH TẬP PHIM ========
+      const episodeList = document.getElementById("episodeList");
+      const episodePlayer = document.getElementById("episodePlayer");
+      const episodeFrame = document.getElementById("episodeFrame");
+
+      movie.episodes.forEach(ep => {
+        const btn = document.createElement("button");
+        btn.className = "btn btn-outline-dark btn-sm";
+        btn.textContent = `Tập ${ep.ep}`;
+        btn.addEventListener("click", () => {
+          episodeFrame.src = ep.url;
+          episodePlayer.classList.remove("d-none");
+          episodePlayer.scrollIntoView({ behavior: "smooth" });
+        });
+        episodeList.appendChild(btn);
+      });
     }
 
     // ======== ĐÁNH GIÁ SAO ========
@@ -148,6 +180,6 @@
       li.textContent = comment;
       list.prepend(li);
     }
-  </script>
+  </script> -->
 </body>
 </html>
